@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -26,12 +29,5 @@ jobs:
       - name: Build Docker Image
         run: make docker-build DOCKER_IMAGE=ghcr.io/${{ github.repository_owner }}/umserver
 
-      - name: Get image hash
-        id: get_hash
-        run: echo "HASH=$(cat image.hash)" >> $GITHUB_OUTPUT
-
       - name: Push Docker Image (latest tag)
         run: docker push ghcr.io/${{ github.repository_owner }}/umserver:latest
-
-      - name: Push Docker Image (hash tag)
-        run: docker push ghcr.io/${{ github.repository_owner }}/umserver:${{ steps.get_hash.outputs.HASH }}

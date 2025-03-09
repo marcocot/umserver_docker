@@ -1,0 +1,41 @@
+# Ultima Mapper Docker
+
+## Overview
+this is a containerized solution for deploying [Ultima Mapper](https://www.ultimamapper.com/). This repository includes all the necessary files to build and deploy [Ultima Mapper](https://www.ultimamapper.com/) using Docker, ensuring a simple, isolated, and reproducible installation process.
+
+## Features
+- **Containerized Deployment:** Utilizes Docker to isolate the application’s environment, ensuring consistency across development, testing, and production environments.
+- **Simplified Configuration:** Easily configurable via environment variables and configuration files.
+- **Scalability:** Seamlessly integrate with orchestration tools (e.g., Docker Compose, Kubernetes) for horizontal scaling.
+- **Ease of Use:** Streamlined build and run processes designed to minimize setup time.
+
+## Prerequisites
+Before you begin, ensure that you have the following installed on your system:
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/) *(optional, if you prefer using the docker-compose.yml file)*
+
+## Installation
+
+### Cloning the Repository
+To get started, clone the repository and navigate into the project directory:
+```bash
+git clone https://github.com/marcocot/umserver_docker.git
+cd umserver_docker
+```
+
+### Building the Docker Image
+Build the Docker image using the following command:
+
+```bash
+docker build -t umserver:latest .
+```
+
+### Running the Container
+To run the container in detached mode, execute:
+
+```bash
+docker run -d -p 12000:12000 umserver:latest
+```
+
+Note: This command maps port 12000 on your host to port 12000 in the container. Adjust the ports as needed.
+
